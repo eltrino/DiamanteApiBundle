@@ -27,8 +27,18 @@ use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 
 class HandleView
 {
+    /**
+     * @var Serializer
+     */
     private $serializer;
+    /**
+     * @var Logger
+     */
     private $logger;
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
 
     public function __construct(Serializer $serializer, ContainerInterface $container, Logger $logger)
     {

@@ -45,7 +45,7 @@ class RestServiceLoader extends Loader
                 $reflectionMethod,
                 'Diamante\\ApiBundle\\Annotation\\ApiDoc'
             );
-            if ($annotation) {
+            if ($annotation !== null) {
                 $methods = $annotation->getMethod();
                 if (!is_array($methods)) {
                     $methods = [$methods];

@@ -28,12 +28,12 @@ class MethodParameters
     /**
      * @var string
      */
-    private static $allowedTags = '<br><br/><a><b><u><i><p><img><img/><h1><h1><h1><h2><h3><h4><h5><h6>';
+    protected    static $allowedTags = '<br><br/><a><b><u><i><p><img><img/><h1><h1><h1><h2><h3><h4><h5><h6>';
 
     /**
      * @var array
      */
-    private static $fieldsToFilter = [
+    protected static $fieldsToFilter = [
         'name',
         'subject',
         'description',

@@ -40,7 +40,7 @@ class WsseProvider implements AuthenticationProviderInterface
 
     /**
      * Token lifetime in seconds
-     * @var string
+     * @var integer
      */
     private $lifetime;
 
@@ -81,9 +81,7 @@ class WsseProvider implements AuthenticationProviderInterface
                 $token->getAttribute('digest'),
                 $token->getAttribute('nonce'),
                 $token->getAttribute('created'),
-                $this->getSecret($user),
-                $this->getSalt($user),
-                $user
+                $this->getSecret($user)
                 )
             )
             {
@@ -102,11 +100,9 @@ class WsseProvider implements AuthenticationProviderInterface
      * @param $nonce
      * @param $created
      * @param $secret
-     * @param $salt
-     * @param UserInterface $user
      * @return bool
      */
-    private function validateDigest($digest, $nonce, $created, $secret, $salt, UserInterface $user)
+    private function validateDigest($digest, $nonce, $created, $secret)
     {
         // Check created time is not in the future
         if ($this->isTokenFromFuture($created))
@@ -149,15 +145,6 @@ class WsseProvider implements AuthenticationProviderInterface
     private function getSecret(UserInterface $user)
     {
         return $user->getPassword();
-    }
-
-    /**
-     * @param UserInterface $user
-     * @return null|string
-     */
-    private function getSalt(UserInterface $user)
-    {
-        return $user->getSalt();
     }
 
     /**
